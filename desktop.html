@@ -887,14 +887,14 @@
     color: #9CA3AF;
     margin-top: 0.75rem;
   }
-</style>
+/* ---- CONCERN PANELS ---- */   .concern-panel {     display: none;     position: fixed;     top: 0; left: 0; right: 0; bottom: 0;     width: 100vw; height: 100vh;     z-index: 300;     background: #F8F6FF;     overflow-y: auto;     animation: panelSlideIn 0.3s cubic-bezier(0.4,0,0.2,1);   }   .concern-panel.open { display: block; }    @keyframes panelSlideIn {     from { transform: translateY(40px); opacity: 0; }     to { transform: translateY(0); opacity: 1; }   }    .panel-header {     position: sticky; top: 0;     background: #F8F6FF;     padding: 1.25rem 2.5rem;     border-bottom: 1px solid #ede9fe;     display: flex; align-items: center; gap: 1.25rem;     z-index: 10;   }    .panel-back {     background: none; border: none; cursor: pointer;     display: flex; align-items: center; gap: 0.4rem;     color: #A78BFA; font-size: 0.9rem;     font-family: 'DM Sans', sans-serif; font-weight: 500; padding: 0.3rem 0;   }    .panel-title-small { font-size: 0.9rem; font-weight: 500; color: #3b1f8c; }    .panel-body {     max-width: 720px;     margin: 0 auto;     padding: 2.5rem 2.5rem;   }    .panel-eyebrow {     font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;     text-transform: uppercase; color: #A78BFA; margin-bottom: 0.5rem;   }    .panel-heading {     font-family: 'DM Serif Display', serif;     font-size: 2.2rem; color: #1a1035;     line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.02em;   }    .panel-intro {     font-size: 0.95rem; color: #6B7280; line-height: 1.75; margin-bottom: 2rem;   }    .panel-block {     background: white; border: 1px solid #ede9fe;     border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem;   }    .panel-block-title {     font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;     text-transform: uppercase; color: #A78BFA; margin-bottom: 0.85rem;   }    .panel-check-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }   .panel-check-list li {     display: flex; align-items: flex-start; gap: 0.65rem;     font-size: 0.9rem; color: #374151; line-height: 1.5;   }    .check-dot {     width: 20px; height: 20px; border-radius: 50%;     background: #ede9fe; display: flex; align-items: center;     justify-content: center; flex-shrink: 0; margin-top: 1px;     font-size: 0.65rem; color: #5b21b6; font-weight: 700;   }    .panel-question-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }   .panel-question-list li {     font-size: 0.9rem; color: #6B7280; line-height: 1.5;     padding-left: 1.1rem; position: relative;   }   .panel-question-list li::before {     content: 'Q'; position: absolute; left: 0;     font-size: 0.7rem; font-weight: 700; color: #EC4899; top: 1px;   }    .panel-resonance {     background: linear-gradient(135deg, #1a1035 0%, #2d1b69 100%);     border-radius: 20px; padding: 2rem; margin: 2rem 0; text-align: center;   }    .resonance-text {     font-family: 'DM Serif Display', serif;     font-size: 1.3rem; color: white; line-height: 1.4;     margin-bottom: 0.5rem; font-style: italic;   }    .resonance-sub {     font-size: 0.82rem; color: rgba(255,255,255,0.5);     margin-bottom: 1.5rem; line-height: 1.5;   }    .btn-panel-book {     background: #EC4899; color: white;     padding: 0.9rem 2.5rem; border-radius: 50px;     font-size: 0.95rem; font-weight: 500; border: none;     cursor: pointer; font-family: 'DM Sans', sans-serif;     transition: background 0.2s;   }   .btn-panel-book:hover { background: #db2777; }    .panel-note { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.65rem; } </style>
 
 <!-- BOOKING MODAL -->
 <div class="modal-overlay" id="bookingModal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">×</button>
     <div class="modal-title">Book your consultation</div>
-    <p class="modal-sub">Tell us a little about what's going on — a specialist will reach out within 24 hrs.</p>
+    <p class="modal-sub">Tell us a little about what's going on , a specialist will reach out within 24 hrs.</p>
     <div class="modal-form">
       <label>Your name</label>
       <input type="text" placeholder="e.g. Priya Sharma" />
@@ -908,7 +908,7 @@
         <option>Trying to conceive</option>
         <option>Hormone guidance</option>
         <option>Nutrition support</option>
-        <option>Not sure — need help understanding symptoms</option>
+        <option>Not sure , need help understanding symptoms</option>
       </select>
       <button class="modal-submit" onclick="submitForm()">Request a callback →</button>
       <p class="modal-note">No spam. No commitments. Just a real conversation.</p>
@@ -936,7 +936,7 @@
         Proactive health for women
       </div>
       <h1>Understand your body.<br><em>Before</em> it asks you to.</h1>
-      <p class="hero-sub">From irregular periods and PCOS to fertility and hormonal health — get guidance from doctors and nutritionists who look for root causes, not just prescriptions.</p>
+      <p class="hero-sub">From irregular periods and PCOS to fertility and hormonal health , get guidance from doctors and nutritionists who look for root causes, not just prescriptions.</p>
       <div class="hero-actions">
         <a href="#" class="btn-primary" onclick="openModal(event)">Book your first consultation</a>
         <a href="#symptom-picker" class="btn-secondary">Understand my symptoms →</a>
@@ -971,8 +971,8 @@
     </div>
     <div class="trust-divider"></div>
     <div class="trust-item">
-      <div class="trust-num">48 hrs</div>
-      <div class="trust-label">avg. first appointment</div>
+      <div class="trust-num">24 Hrs</div>
+      <div class="trust-label">get a call from a doctor</div>
     </div>
     <div class="trust-divider"></div>
     <div class="trust-item">
@@ -990,10 +990,10 @@
   <section class="section" id="symptom-picker">
     <div class="section-tag">Start here</div>
     <div class="section-title">What brings you here?</div>
-    <p class="section-sub">Choose what feels most relevant. You'll be matched with the right expert for your needs — no guessing, no generic forms.</p>
+    <p class="section-sub">Choose what feels most relevant. You'll be matched with the right expert for your needs , no guessing, no generic forms.</p>
     <div class="symptom-grid">
 
-      <a href="#" class="symptom-card" onclick="openModalWithConcern(event, 'Irregular periods')">
+      <a href="#" class="symptom-card" onclick="event.preventDefault(); openPanel('panel-periods')">
         <div class="symptom-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
@@ -1005,7 +1005,7 @@
         <div class="symptom-arrow">→</div>
       </a>
 
-      <a href="#" class="symptom-card" onclick="openModalWithConcern(event, 'PCOS')">
+      <a href="#" class="symptom-card" onclick="event.preventDefault(); openPanel('panel-pcos')">
         <div class="symptom-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"/>
@@ -1017,7 +1017,7 @@
         <div class="symptom-arrow">→</div>
       </a>
 
-      <a href="#" class="symptom-card" onclick="openModalWithConcern(event, 'Trying to conceive')">
+      <a href="#" class="symptom-card" onclick="event.preventDefault(); openPanel('panel-fertility')">
         <div class="symptom-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2C6.48 2 4 6 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4-2.48-8-8-8z"/>
@@ -1028,7 +1028,7 @@
         <div class="symptom-arrow">→</div>
       </a>
 
-      <a href="#" class="symptom-card" onclick="openModalWithConcern(event, 'Hormone guidance')">
+      <a href="#" class="symptom-card" onclick="event.preventDefault(); openPanel('panel-hormones')">
         <div class="symptom-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#EC4899"/>
@@ -1038,7 +1038,7 @@
         <div class="symptom-arrow">→</div>
       </a>
 
-      <a href="#" class="symptom-card" onclick="openModalWithConcern(event, 'Nutrition support')">
+      <a href="#" class="symptom-card" onclick="event.preventDefault(); openPanel('panel-nutrition')">
         <div class="symptom-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a7 7 0 0 1 7 7c0 4-3 7-7 13C9 16 5 13 5 9a7 7 0 0 1 7-7z"/>
@@ -1049,7 +1049,7 @@
         <div class="symptom-arrow">→</div>
       </a>
 
-      <a href="#" class="symptom-card" style="border-style: dashed; background: #fdfcff;" onclick="openModalWithConcern(event, 'Not sure — need help understanding symptoms')">
+      <a href="#" class="symptom-card" style="border-style: dashed; background: #fdfcff;" onclick="event.preventDefault(); openPanel('panel-unsure')">
         <div class="symptom-icon" style="background: #fce7f3;">
           <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -1078,7 +1078,7 @@
           </svg>
         </div>
         <div class="why-title">Root cause approach</div>
-        <div class="why-desc">We look beyond the symptom checklist. Every plan starts with understanding why — not just what — so the same problem doesn't come back.</div>
+        <div class="why-desc">We look beyond the symptom checklist. Every plan starts with understanding why , not just what , so the same problem doesn't come back.</div>
       </div>
       <div class="why-card">
         <div class="why-icon-wrap wi-pink">
@@ -1099,7 +1099,7 @@
           </svg>
         </div>
         <div class="why-title">No judgment. Seriously.</div>
-        <div class="why-desc">Ask the question you've been embarrassed to ask your regular doctor. Our experts are here specifically for this — and they've heard it before.</div>
+        <div class="why-desc">Ask the question you've been embarrassed to ask your regular doctor. Our experts are here specifically for this , and they've heard it before.</div>
       </div>
       <div class="why-card">
         <div class="why-icon-wrap wi-amber">
@@ -1111,7 +1111,7 @@
           </svg>
         </div>
         <div class="why-title">Nutraceuticals + diagnostics at home</div>
-        <div class="why-desc">Tests you can do at home. Supplements prescribed based on your actual results. Everything ships to you — no pharmacy queues, no separate app.</div>
+        <div class="why-desc">Tests you can do at home. Supplements prescribed based on your actual results. Everything ships to you , no pharmacy queues, no separate app.</div>
       </div>
     </div>
   </section>
@@ -1193,7 +1193,7 @@
 
       <div class="expert-card">
         <div class="expert-avatar">
-          <img src="https://api.dicebear.com/7.x/personas/svg?seed=Priya&backgroundColor=ede9fe&skinColor=brown" alt="Dr. Priya Mehta" />
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&h=200&fit=crop&crop=face" alt="Dr. Priya Mehta" />
         </div>
         <div class="expert-name">Dr. Priya Mehta</div>
         <div class="expert-role">Gynaecologist & Hormonal Health</div>
@@ -1207,11 +1207,10 @@
 
       <div class="expert-card">
         <div class="expert-avatar">
-          <img src="https://api.dicebear.com/7.x/personas/svg?seed=Ananya&backgroundColor=fce7f3&skinColor=brown" alt="Dr. Ananya Bose" />
-        </div>
+<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face" alt="Dr. Ananya Bose" />        </div>
         <div class="expert-name">Dr. Ananya Bose</div>
         <div class="expert-role">Integrative Nutritionist</div>
-        <p class="expert-quote">"Nutrition for women isn't one-size. Your hormonal phase changes everything — and most advice ignores that."</p>
+        <p class="expert-quote">"Nutrition for women isn't one-size. Your hormonal phase changes everything , and most advice ignores that."</p>
         <div class="expert-tags">
           <span class="tag">Thyroid</span>
           <span class="tag">Gut health</span>
@@ -1266,7 +1265,7 @@
   <section class="faq-section section-alt" id="faq">
     <div class="section-tag">Got questions?</div>
     <div class="section-title">Things women usually ask us</div>
-    <p class="section-sub">The questions you'd actually want answered before booking — not the corporate FAQ.</p>
+    <p class="section-sub">The questions you'd actually want answered before booking , not the corporate FAQ.</p>
 
     <div class="faq-grid">
 
@@ -1275,7 +1274,7 @@
           Is this just a one-time consultation or ongoing support?
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer">We're built for ongoing care, not one-and-done appointments. After your first consultation, you get a personalised plan with follow-up sessions baked in. Your doctor and nutritionist stay in the loop together — so nothing falls through the cracks.</div>
+        <div class="faq-answer">We're built for ongoing care, not one-and-done appointments. After your first consultation, you get a personalised plan with follow-up sessions baked in. Your doctor and nutritionist stay in the loop together , so nothing falls through the cracks.</div>
       </div>
 
       <div class="faq-item">
@@ -1283,7 +1282,7 @@
           I've been told my symptoms are "just stress." Will you actually investigate?
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer">Yes. This is one of the most common things we hear — and one of the reasons Unlock exists. Our doctors are trained to look at hormonal panels, thyroid markers, cycle patterns, and nutritional deficiencies that often get missed in a standard 10-minute consultation.</div>
+        <div class="faq-answer">Yes. This is one of the most common things we hear , and one of the reasons Unlock exists. Our doctors are trained to look at hormonal panels, thyroid markers, cycle patterns, and nutritional deficiencies that often get missed in a standard 10-minute consultation.</div>
       </div>
 
       <div class="faq-item">
@@ -1291,7 +1290,7 @@
           I have PCOS. Do you offer more than just weight loss advice?
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer">Absolutely. PCOS affects insulin, androgens, ovulation, mood, skin, and gut health — and we look at all of it. Our PCOS plans are built around your specific hormonal profile, not a generic protocol.</div>
+        <div class="faq-answer">Absolutely. PCOS affects insulin, androgens, ovulation, mood, skin, and gut health , and we look at all of it. Our PCOS plans are built around your specific hormonal profile, not a generic protocol.</div>
       </div>
 
       <div class="faq-item">
@@ -1299,7 +1298,7 @@
           Can I get lab tests done at home?
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer">Yes. We partner with certified labs for at-home sample collection. Your doctor reviews the results and adjusts your care plan accordingly — no separate app, no chasing reports.</div>
+        <div class="faq-answer">Yes. We partner with certified labs for at-home sample collection. Your doctor reviews the results and adjusts your care plan accordingly , no separate app, no chasing reports.</div>
       </div>
 
       <div class="faq-item">
@@ -1307,7 +1306,7 @@
           I'm trying to conceive. How soon can I get an appointment?
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer">Most women are matched with a fertility-focused specialist within 48 hours of booking. We look at both medical and nutritional factors — because both matter when you're trying to conceive.</div>
+        <div class="faq-answer">Most women are matched with a fertility-focused specialist within 48 hours of booking. We look at both medical and nutritional factors , because both matter when you're trying to conceive.</div>
       </div>
 
       <div class="faq-item">
@@ -1315,7 +1314,7 @@
           Are your doctors qualified? What should I expect?
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer">All our doctors are registered practitioners with specialisations in women's health, gynaecology, or integrative medicine. Consultations are 30–45 minutes — not 10 — and you'll leave with a written plan, not just verbal advice.</div>
+        <div class="faq-answer">All our doctors are registered practitioners with specialisations in women's health, gynaecology, or integrative medicine. Consultations are 30–45 minutes , not 10 , and you'll leave with a written plan, not just verbal advice.</div>
       </div>
 
       <div class="faq-item">
@@ -1323,7 +1322,7 @@
           Do you prescribe medications or just lifestyle advice?
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer">Both, depending on what you need. Our doctors can prescribe medications where required. They also work alongside nutritionists who build food and supplement plans — so the medical and lifestyle sides are coordinated from day one.</div>
+        <div class="faq-answer">Both, depending on what you need. Our doctors can prescribe medications where required. They also work alongside nutritionists who build food and supplement plans , so the medical and lifestyle sides are coordinated from day one.</div>
       </div>
 
       <div class="faq-item">
@@ -1331,7 +1330,7 @@
           How is this different from just going to a gynaecologist?
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer">A traditional gynaecologist focuses on clinical care — which is vital. But Unlock adds nutritional guidance, at-home diagnostics, follow-up care, and a holistic view of your hormonal health all in one place. Think of it as your complete women's health team, not just one specialist.</div>
+        <div class="faq-answer">A traditional gynaecologist focuses on clinical care , which is vital. But Unlock adds nutritional guidance, at-home diagnostics, follow-up care, and a holistic view of your hormonal health all in one place. Think of it as your complete women's health team, not just one specialist.</div>
       </div>
 
     </div>
@@ -1351,7 +1350,7 @@
   <footer>
     <div>
       <a href="#" class="footer-logo">unlock<span>.</span></a>
-      <p class="footer-tagline">Proactive health for women.<br>Doctors, nutritionists and diagnostics — in one place, built around you.</p>
+      <p class="footer-tagline">Proactive health for women.<br>Doctors, nutritionists and diagnostics , in one place, built around you.</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
@@ -1389,8 +1388,257 @@
   </div>
 
 </div>
+<!-- CONCERN PANELS -->
+<div class="concern-panel" id="panel-periods">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Irregular Periods</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Understanding your cycle</div>
+    <div class="panel-heading">Your cycle is telling you something</div>
+    <p class="panel-intro">Irregular periods are one of the most common concerns women come to us with, and one of the most under-investigated. A cycle that's unpredictable, painful, very heavy or barely there is worth looking into properly.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">Signs we look for</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Cycles shorter than 21 days or longer than 35</li>
+        <li><span class="check-dot">✓</span>Missing periods for 3 or more months</li>
+        <li><span class="check-dot">✓</span>Bleeding that's extremely heavy or very light</li>
+        <li><span class="check-dot">✓</span>Significant PMS, mood shifts, or cramping</li>
+        <li><span class="check-dot">✓</span>Spotting between periods</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>How long has your cycle been irregular?</li>
+        <li>Any recent changes in weight, stress, or sleep?</li>
+        <li>Have you had your thyroid or hormone levels checked before?</li>
+        <li>Are you on any contraception currently?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I was told it was just stress for years. Turns out it was a hormonal imbalance nobody had tested for."</p>
+      <p class="resonance-sub">Many women wait years before getting a real answer. You don't have to.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Irregular periods')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
 
+<div class="concern-panel" id="panel-pcos">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">PCOS</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Polycystic Ovary Syndrome</div>
+    <div class="panel-heading">PCOS is more than a hormone problem</div>
+    <p class="panel-intro">PCOS affects insulin, androgens, ovulation, mood, skin, and gut health. Most women with PCOS have only ever been given one piece of that picture. We look at all of it.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">Signs we look for</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Irregular or absent periods</li>
+        <li><span class="check-dot">✓</span>Unexplained weight gain or difficulty losing weight</li>
+        <li><span class="check-dot">✓</span>Acne, hair thinning, or excess facial hair</li>
+        <li><span class="check-dot">✓</span>Mood swings, anxiety, or fatigue</li>
+        <li><span class="check-dot">✓</span>Difficulty conceiving</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>Have you had an ultrasound or hormonal blood panel done?</li>
+        <li>Which symptoms are affecting your daily life the most?</li>
+        <li>Has anyone looked at your insulin or thyroid markers?</li>
+        <li>What have you already tried, and what happened?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I was diagnosed at 22 and told to lose weight. Nobody explained what was actually happening inside my body."</p>
+      <p class="resonance-sub">A PCOS plan should be built around your specific hormonal profile, not a generic protocol.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('PCOS')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-fertility">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Trying to Conceive</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Fertility support</div>
+    <div class="panel-heading">Trying to conceive is more than tracking ovulation</div>
+    <p class="panel-intro">Fertility prep involves your hormones, nutrition, cycle health, and your partner's health too. We look at the full picture before you start trying, or to understand why it hasn't happened yet.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">Areas we assess</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Cycle regularity and ovulation patterns</li>
+        <li><span class="check-dot">✓</span>Hormonal baseline (AMH, FSH, thyroid, progesterone)</li>
+        <li><span class="check-dot">✓</span>Nutritional status and deficiencies that affect conception</li>
+        <li><span class="check-dot">✓</span>Unexplained infertility or previous pregnancy loss</li>
+        <li><span class="check-dot">✓</span>Lifestyle factors that impact egg quality</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>How long have you been trying to conceive?</li>
+        <li>Have you had any fertility investigations so far?</li>
+        <li>Do you have regular, predictable cycles?</li>
+        <li>Are you open to nutritional support alongside medical guidance?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"After 14 months of trying, I finally understood what my body actually needed. It wasn't just about timing."</p>
+      <p class="resonance-sub">Whether you're just starting or have been trying for a while, there's always more to understand.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Trying to conceive')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-hormones">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Hormone Guidance</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Hormonal health</div>
+    <div class="panel-heading">Your hormones affect everything</div>
+    <p class="panel-intro">Fatigue, mood swings, weight changes, brain fog, low libido — these are often hormonal. But standard blood tests miss a lot, and most GPs don't have time to dig deeper. We do.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">Signs we look for</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Persistent fatigue that sleep doesn't fix</li>
+        <li><span class="check-dot">✓</span>Mood swings, anxiety, or low mood tied to your cycle</li>
+        <li><span class="check-dot">✓</span>Unexplained weight gain, especially around the middle</li>
+        <li><span class="check-dot">✓</span>Brain fog, poor concentration, or memory issues</li>
+        <li><span class="check-dot">✓</span>Hair loss, skin changes, or low libido</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>Which symptoms are most affecting your quality of life?</li>
+        <li>Have you had a full hormonal panel done recently?</li>
+        <li>Do your symptoms follow a pattern through the month?</li>
+        <li>Any family history of thyroid conditions or hormonal issues?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I was told my results were 'normal'. But I didn't feel normal. Unlock found what everyone else had missed."</p>
+      <p class="resonance-sub">Normal ranges aren't always optimal. We look for what's right for you.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Hormone guidance')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-nutrition">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Nutrition Support</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Nutritional health</div>
+    <div class="panel-heading">Food is medicine, if you know how to use it</div>
+    <p class="panel-intro">Women's nutritional needs shift constantly through the cycle, through hormonal conditions, and through life stages. Generic advice rarely fits. Our nutritionists work from your actual results, not generic plans.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">Areas we cover</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Nutrition for PCOS, thyroid, and hormonal balance</li>
+        <li><span class="check-dot">✓</span>Gut health and its connection to hormones</li>
+        <li><span class="check-dot">✓</span>Deficiency correction (iron, B12, vitamin D, magnesium)</li>
+        <li><span class="check-dot">✓</span>Eating patterns that support cycle health</li>
+        <li><span class="check-dot">✓</span>Supplement guidance based on test results</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>Have you had any blood tests or nutritional panels done?</li>
+        <li>Are there specific symptoms you're hoping nutrition can help?</li>
+        <li>Any dietary restrictions or preferences to work around?</li>
+        <li>Are you managing a condition like PCOS or thyroid alongside this?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I didn't know what I was deficient in. Once I found out, everything started to make sense."</p>
+      <p class="resonance-sub">Supplements without testing is guesswork. We start with your actual numbers.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Nutrition support')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-unsure">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Not Sure?</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Start here</div>
+    <div class="panel-heading">Not knowing is a valid place to start</div>
+    <p class="panel-intro">You don't need to have a diagnosis or even be able to name what's wrong. Many women come to us with a feeling, not a label. That's exactly what our first consultation is designed for.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">You might be feeling</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Something is off, but tests say everything is normal</li>
+        <li><span class="check-dot">✓</span>Unexplained fatigue, mood changes or weight shifts</li>
+        <li><span class="check-dot">✓</span>Periods that feel different but no clear reason</li>
+        <li><span class="check-dot">✓</span>General sense of not feeling like yourself</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">What we'll do together</div>
+      <ul class="panel-question-list">
+        <li>Listen to your full history without rushing</li>
+        <li>Help you name what might actually be going on</li>
+        <li>Suggest the right tests to get clarity</li>
+        <li>Match you with the right specialist, whether doctor or nutritionist</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I didn't know what was wrong. I just knew something wasn't right. Unlock helped me figure it out."</p>
+      <p class="resonance-sub">No judgment, no assumptions. Just a real conversation.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Not sure, need help understanding symptoms')">Book a free first call</button>
+      <p class="panel-note">No commitment. No forms to fill before talking to someone.</p>
+    </div>
+  </div>
+</div>
 <script>
+  // ---- CONCERN PANELS ----
+  function openPanel(id) {
+    document.querySelectorAll('.concern-panel').forEach(p => p.classList.remove('open'));
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePanel() {
+    document.querySelectorAll('.concern-panel').forEach(p => p.classList.remove('open'));
+    document.body.style.overflow = '';
+  }
+
+  function openModalFromPanel(concern) {
+    closePanel();
+    // reuse existing openModal logic
+    openModal({ preventDefault: () => {} });
+    // pre-select concern in the modal dropdown if it exists
+    setTimeout(() => {
+      const sel = document.querySelector('.modal-form select');
+      if (sel) {
+        for (let opt of sel.options) {
+          if (opt.text.toLowerCase().includes(concern.toLowerCase().split(',')[0])) {
+            sel.value = opt.value;
+            break;
+          }
+        }
+      }
+    }, 50);
+  }
   // Modal open/close
   function openModal(e) {
     if (e) e.preventDefault();
