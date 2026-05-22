@@ -1679,7 +1679,8 @@
     }
     fetch('https://script.google.com/macros/s/AKfycbxkTa7Wv1RpQzxGCb2e64ule97Lzq8OgEKaNTFc4sNUZokVb53QmaFyIXLVJeUPqsqZiQ/exec', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ name, phone, concern, source: 'unlock-desktop' })
     }).catch(() => {});
     const btn = document.querySelector('.modal-submit');
