@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Unlock Healthcare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --purple: #A78BFA;
+    --purple-deep: #7c3aed;
+    --purple-light: #ede9fe;
+    --purple-pale: #F8F6FF;
+    --pink: #EC4899;
+    --pink-deep: #db3d8a;
+    --pink-light: #fce7f3;
+    --navy: #1a1035;
+    --navy-mid: #2d2250;
+    --text: #4B5563;
+    --text-light: #6B7280;
+    --text-muted: #9CA3AF;
+    --border: #f0eef8;
+    --bg: #FFFDFB;
+    --green: #34d399;
+    --teal-light: #d1fae5;
+    --amber-light: #fef3c7;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    max-width: 430px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  /* When a panel is open, the panel must cover full screen including sidebar space */
+  .concern-panel .panel-body {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .concern-panel .panel-block,
+  .concern-panel .panel-resonance {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy-mid);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--purple); }
+
+  .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+
+  .nav-book {
+    background: var(--pink);
+    color: white;
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-book:hover { background: var(--pink-deep); }
+
+  .hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--navy-mid);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* MOBILE MENU DRAWER */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: var(--navy);
+    z-index: 190;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+
+  .mobile-menu a {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    padding: 0.6rem 2rem;
+    transition: color 0.2s;
+    letter-spacing: -0.02em;
+  }
+  .mobile-menu a:hover { color: var(--purple); }
+  .mobile-menu a.menu-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    background: var(--pink);
+    color: white;
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
+    margin-top: 1.5rem;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 2.5rem 1.5rem 2rem;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-pale) 0%, var(--pink-light) 100%);
+    top: -80px;
+    right: -80px;
+    z-index: 0;
+    opacity: 0.7;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--purple-pale);
+    color: var(--purple);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--purple); }
+
+  .hero-sub {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-actions { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .btn-primary {
+    background: var(--pink);
+    color: white;
+    padding: 0.9rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary:active { background: var(--pink-deep); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 0.9rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.92rem;
+    font-weight: 400;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-secondary:active { border-color: var(--purple); color: var(--purple); }
+
+  /* FLOATING PILLS - mobile compact */
+  .hero-pills {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+
+  .mini-pill {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text);
+    box-shadow: 0 2px 12px rgba(167,139,250,0.1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--purple-pale);
+    padding: 1.5rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .trust-item { text-align: center; }
+
+  .trust-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .trust-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+    line-height: 1.3;
+  }
+
+  /* SECTIONS */
+  .section { padding: 3rem 1.5rem; }
+  .section-alt { background: var(--purple-pale); }
+
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.75rem;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .section-sub {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* CONCERN CARDS */
+  .concern-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .concern-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(167,139,250,0.15);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .concern-card:active {
+    border-color: var(--purple);
+    transform: scale(0.99);
+  }
+
+  .concern-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--purple-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .concern-icon svg { width: 21px; height: 21px; }
+
+  .concern-text { flex: 1; }
+  .concern-label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--navy-mid);
+    line-height: 1.3;
+  }
+  .concern-hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  .concern-arrow {
+    color: var(--purple);
+    font-size: 1rem;
+    opacity: 0.5;
+  }
+
+  /* CONCERN DETAIL PANEL */
+  .concern-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    z-index: 300;
+    background: var(--bg);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    animation: slideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .concern-panel.open { display: block; }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .panel-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
+  }
+
+  .panel-back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--purple);
+    font-size: 0.875rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    padding: 0.3rem 0;
+  }
+
+  .panel-title-small {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--navy-mid);
+  }
+
+  .panel-body { padding: 1.75rem 1.5rem; }
+
+  .panel-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.5rem;
+  }
+
+  .panel-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.9rem;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .panel-intro {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+  }
+
+  .panel-block {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .panel-block-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.75rem;
+  }
+
+  .panel-check-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .panel-check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .check-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--purple-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 0.6rem;
+    color: var(--purple-deep);
+    font-weight: 700;
+  }
+
+  .panel-question-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .panel-question-list li {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .panel-question-list li::before {
+    content: 'Q';
+    position: absolute;
+    left: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--pink);
+    top: 1px;
+  }
+
+  .panel-resonance {
+    background: linear-gradient(135deg, var(--navy) 0%, #2d1b69 100%);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
+  .resonance-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: white;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .resonance-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+
+  .btn-panel-book {
+    background: var(--pink);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  .btn-panel-book:active { background: var(--pink-deep); }
+
+  .panel-note {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.6rem;
+  }
+
+  /* WHY UNLOCK */
+  .why-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .why-card {
+    background: white;
+    border-radius: 18px;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .why-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .why-icon-wrap svg { width: 22px; height: 22px; }
+  .wi-purple { background: var(--purple-light); }
+  .wi-pink { background: var(--pink-light); }
+  .wi-teal { background: var(--teal-light); }
+  .wi-amber { background: var(--amber-light); }
+
+  .why-content {}
+  .why-title { font-weight: 500; color: var(--navy); margin-bottom: 0.3rem; font-size: 0.92rem; }
+  .why-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+  /* JOURNEY */
+  .journey-section {
+    padding: 3rem 1.5rem;
+    background: var(--navy);
+  }
+
+  .journey-section .section-tag { color: #c4b5fd; }
+  .journey-section .section-title { color: white; margin-bottom: 2rem; }
+
+  .journey-list { display: flex; flex-direction: column; gap: 0; }
+
+  .journey-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    position: relative;
+    padding-bottom: 1.75rem;
+  }
+
+  .journey-step:last-child { padding-bottom: 0; }
+
+  .journey-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 48px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(167,139,250,0.25);
+  }
+
+  .step-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(167,139,250,0.15);
+    border: 1px solid rgba(167,139,250,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .step-circle svg { width: 20px; height: 20px; }
+
+  .step-num {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: var(--pink);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-info { padding-top: 0.6rem; }
+  .step-title { font-weight: 500; font-size: 0.9rem; color: white; margin-bottom: 0.25rem; }
+  .step-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* EXPERTS */
+  .experts-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .expert-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .expert-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+  }
+  .expert-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .expert-info { flex: 1; min-width: 0; }
+  .expert-name { font-weight: 500; color: var(--navy); font-size: 0.92rem; margin-bottom: 0.1rem; }
+  .expert-role { font-size: 0.75rem; color: var(--purple); margin-bottom: 0.6rem; }
+
+  .expert-quote {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    font-style: italic;
+    padding-left: 0.6rem;
+    border-left: 2px solid var(--border);
+    margin-bottom: 0.75rem;
+  }
+
+  .expert-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .tag {
+    background: var(--purple-pale);
+    color: var(--purple-deep);
+    font-size: 0.68rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 50px;
+    font-weight: 500;
+  }
+
+  /* TESTIMONIALS */
+  .testi-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .testi-card {
+    background: var(--purple-pale);
+    border-radius: 16px;
+    padding: 1.25rem;
+    border: 1px solid transparent;
+  }
+
+  .testi-stars { color: var(--pink); font-size: 0.8rem; margin-bottom: 0.6rem; letter-spacing: 0.1em; }
+  .testi-text { font-size: 0.85rem; color: var(--text); line-height: 1.65; margin-bottom: 0.75rem; font-style: italic; }
+  .testi-author { font-size: 0.8rem; font-weight: 500; color: var(--navy-mid); }
+  .testi-detail { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 0.65rem; }
+
+  .faq-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1rem 1.1rem;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--navy);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--purple-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s, background 0.2s;
+    font-size: 0.65rem;
+    color: var(--purple);
+  }
+
+  .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--purple-light); }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    padding: 0 1.1rem;
+  }
+  .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.1rem 1rem; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #2d1b69 100%);
+    padding: 3rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(167,139,250,0.08);
+    top: -80px;
+    left: -80px;
+  }
+
+  .cta-section .section-tag { position: relative; z-index: 1; }
+  .cta-section .section-title { color: white; position: relative; z-index: 1; }
+  .cta-section .section-sub { color: rgba(255,255,255,0.6); position: relative; z-index: 1; margin-bottom: 1.75rem; }
+
+  .cta-actions { display: flex; flex-direction: column; gap: 0.75rem; position: relative; z-index: 1; }
+
+  .btn-white {
+    background: white;
+    color: var(--navy);
+    padding: 0.9rem;
+    border-radius: 50px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    padding: 0.9rem;
+    border-radius: 50px;
+    font-size: 0.92rem;
+    font-weight: 400;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0e0825;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 0.6rem;
+  }
+  .footer-logo span { color: var(--purple); }
+
+  .footer-tagline {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-col h4 {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.85rem;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.55rem; }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.82rem;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--purple); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+
+  /* BOOKING MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,16,53,0.65);
+    backdrop-filter: blur(6px);
+    z-index: 400;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal-box {
+    background: white;
+    border-radius: 24px 24px 0 0;
+    padding: 2rem 1.5rem 2.5rem;
+    width: 100%;
+    position: relative;
+    animation: sheetUp 0.3s cubic-bezier(0.4,0,0.2,1);
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  @keyframes sheetUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .modal-handle {
+    width: 36px;
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .modal-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+
+  .modal-sub {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .modal-form label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    margin-top: 1rem;
+  }
+
+  .modal-form input, .modal-form select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--navy);
+    outline: none;
+    background: var(--bg);
+    -webkit-appearance: none;
+  }
+  .modal-form input:focus, .modal-form select:focus { border-color: var(--purple); }
+
+  .modal-submit {
+    width: 100%;
+    margin-top: 1.5rem;
+    background: var(--pink);
+    color: white;
+    border: none;
+    padding: 0.95rem;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .modal-submit:active { background: var(--pink-deep); }
+
+  .modal-note {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+  }
+
+  /* SUCCESS STATE */
+  .modal-success {
+    display: none;
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+  .modal-success.show { display: block; }
+  .modal-form-wrap.hidden { display: none; }
+
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+  }
+
+  .success-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .success-sub {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* iOS full-screen panel fix */
+  @supports (-webkit-touch-callout: none) {
+    .concern-panel {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      height: -webkit-fill-available;
+    }
+  }
+
+  /* Touch-action on all interactive elements */
+  button, a, [onclick] {
+    touch-action: manipulation;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- BOOKING MODAL (bottom sheet) -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-form-wrap" id="modalFormWrap">
+      <div class="modal-title">Book your consultation</div>
+      <p class="modal-sub">Tell us a little about what's going on. A specialist will reach out within 24 hours.</p>
+      <div class="modal-form">
+        <label>Your name</label>
+        <input type="text" id="m-name" placeholder="e.g. Priya Sharma" autocomplete="name" />
+        <label>Phone number</label>
+        <input type="tel" id="m-phone" placeholder="+91 98765 43210" autocomplete="tel" />
+        <label>What brings you here?</label>
+        <select id="m-concern">
+          <option value="">Select a concern</option>
+          <option>Irregular periods</option>
+          <option>PCOS</option>
+          <option>Trying to conceive</option>
+          <option>Hormone guidance</option>
+          <option>Nutrition support</option>
+          <option>Not sure, need help understanding symptoms</option>
+        </select>
+        <button class="modal-submit" onclick="submitForm()">Request a callback</button>
+        <p class="modal-note">No spam. No commitments. Just a real conversation.</p>
+      </div>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="success-icon">✓</div>
+      <div class="success-title">You're all set</div>
+      <p class="success-sub">We've received your details. A specialist will call you within 24 hours to talk things through.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONCERN PANELS -->
+<div class="concern-panel" id="panel-periods">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Irregular Periods</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Understanding your cycle</div>
+    <div class="panel-heading">Your cycle is telling you something</div>
+    <p class="panel-intro">Irregular periods are one of the most common concerns women come to us with, and one of the most under-investigated. A cycle that's unpredictable, painful, very heavy or barely there is worth looking into properly.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">Signs we look for</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Cycles shorter than 21 days or longer than 35</li>
+        <li><span class="check-dot">✓</span>Missing periods for 3 or more months</li>
+        <li><span class="check-dot">✓</span>Bleeding that's extremely heavy or very light</li>
+        <li><span class="check-dot">✓</span>Significant PMS, mood shifts, or cramping</li>
+        <li><span class="check-dot">✓</span>Spotting between periods</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>How long has your cycle been irregular?</li>
+        <li>Any recent changes in weight, stress, or sleep?</li>
+        <li>Have you had your thyroid or hormone levels checked before?</li>
+        <li>Are you on any contraception currently?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I was told it was just stress for years. Turns out it was a hormonal imbalance nobody had tested for."</p>
+      <p class="resonance-sub">Many women wait years before getting a real answer. You don't have to.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Irregular periods')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-pcos">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">PCOS</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">More than a diagnosis</div>
+    <div class="panel-heading">PCOS is complex. Your care should be too.</div>
+    <p class="panel-intro">PCOS is one of the most common hormonal conditions in women, yet most women receive generic advice. At Unlock, we look at your specific hormonal picture, not a standard protocol.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">What we investigate</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Insulin resistance and blood sugar patterns</li>
+        <li><span class="check-dot">✓</span>Androgen levels causing acne, hair loss or growth</li>
+        <li><span class="check-dot">✓</span>Ovulation patterns and cycle regularity</li>
+        <li><span class="check-dot">✓</span>Gut health, inflammation and nutrient deficiencies</li>
+        <li><span class="check-dot">✓</span>Mood, energy and sleep disruption</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>When were you diagnosed, and what tests were done?</li>
+        <li>What symptoms bother you most right now?</li>
+        <li>Have you tried any treatment or lifestyle changes so far?</li>
+        <li>Are you thinking about fertility in the near future?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I was just told to lose weight. Nobody looked at my insulin, my gut, or my actual hormones."</p>
+      <p class="resonance-sub">PCOS is not one condition. Your plan should reflect your version of it.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('PCOS')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-fertility">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Trying to Conceive</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Fertility support</div>
+    <div class="panel-heading">Preparing your body, not just your mindset</div>
+    <p class="panel-intro">When you're trying to conceive, you deserve more than "just relax." We look at the medical and nutritional factors that genuinely affect your chances, and work with you before a crisis, not after.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">What we look at</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Ovulation tracking and cycle health</li>
+        <li><span class="check-dot">✓</span>Hormonal levels including AMH and thyroid</li>
+        <li><span class="check-dot">✓</span>Nutritional foundations for conception</li>
+        <li><span class="check-dot">✓</span>Underlying conditions like PCOS or thyroid issues</li>
+        <li><span class="check-dot">✓</span>Emotional and lifestyle factors that affect fertility</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>How long have you been trying?</li>
+        <li>Have you had any fertility tests done yet?</li>
+        <li>Do you have a regular cycle currently?</li>
+        <li>Are there any known conditions on your or your partner's side?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"We'd been trying for 14 months. Within 6 weeks of working with Unlock, I finally had a plan, not just hope."</p>
+      <p class="resonance-sub">A matched specialist, often within 48 hours of booking.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Trying to conceive')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-hormones">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Hormone Guidance</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Hormonal health</div>
+    <div class="panel-heading">Hormones affect everything. We take them seriously.</div>
+    <p class="panel-intro">Fatigue, brain fog, mood swings, unexplained weight changes, low libido, hair thinning - these are not "just getting older." They're signals worth investigating.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">What we assess</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Full hormonal panel including oestrogen, progesterone, testosterone</li>
+        <li><span class="check-dot">✓</span>Thyroid function, including T3, T4 and TSH</li>
+        <li><span class="check-dot">✓</span>Cortisol and stress hormone patterns</li>
+        <li><span class="check-dot">✓</span>Nutritional deficiencies linked to hormonal imbalance</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>Which symptoms are affecting your daily life most?</li>
+        <li>Have you had hormonal blood work done in the last year?</li>
+        <li>Do symptoms follow a pattern across your cycle?</li>
+        <li>Any family history of thyroid or hormonal conditions?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I was exhausted, gaining weight and told everything was 'normal.' Unlock found my thyroid was underactive."</p>
+      <p class="resonance-sub">If you feel off but can't explain it, that's worth investigating.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Hormone guidance')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-nutrition">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Nutrition Support</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Nutrition built around your body</div>
+    <div class="panel-heading">Food advice that actually fits your hormones</div>
+    <p class="panel-intro">Generic "eat healthy" advice isn't enough when your hormones are involved. Our nutritionists work alongside doctors to build plans that respond to your actual test results, cycle phase, and health goals.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">What your nutrition plan covers</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Cycle-synced eating for hormonal balance</li>
+        <li><span class="check-dot">✓</span>Managing blood sugar and insulin resistance</li>
+        <li><span class="check-dot">✓</span>Anti-inflammatory foods for PCOS and thyroid health</li>
+        <li><span class="check-dot">✓</span>Targeted supplements based on your test results</li>
+        <li><span class="check-dot">✓</span>Gut health and its role in hormone regulation</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">Questions we'll explore with you</div>
+      <ul class="panel-question-list">
+        <li>Do you follow any particular diet currently?</li>
+        <li>Any known intolerances or digestive issues?</li>
+        <li>Are you taking any supplements already?</li>
+        <li>What's your main goal - energy, weight, hormonal balance, or fertility?</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I didn't need a diet plan. I needed someone who understood how my cycle affected my hunger, energy, and weight."</p>
+      <p class="resonance-sub">Your nutritionist and doctor stay aligned from day one.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Nutrition support')">Book a consultation</button>
+      <p class="panel-note">Free first call. No commitment needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="concern-panel" id="panel-unsure">
+  <div class="panel-header">
+    <button class="panel-back" onclick="closePanel()">← Back</button>
+    <span class="panel-title-small">Not Sure?</span>
+  </div>
+  <div class="panel-body">
+    <div class="panel-eyebrow">Start here</div>
+    <div class="panel-heading">Not knowing is a valid place to start</div>
+    <p class="panel-intro">You don't need to have a diagnosis or even be able to name what's wrong. Many women come to us with a feeling, not a label. That's exactly what our first consultation is designed for.</p>
+    <div class="panel-block">
+      <div class="panel-block-title">You might be feeling</div>
+      <ul class="panel-check-list">
+        <li><span class="check-dot">✓</span>Something is off, but tests say everything is normal</li>
+        <li><span class="check-dot">✓</span>Unexplained fatigue, mood changes or weight shifts</li>
+        <li><span class="check-dot">✓</span>Periods that feel different but no clear reason</li>
+        <li><span class="check-dot">✓</span>General sense of not feeling like yourself</li>
+      </ul>
+    </div>
+    <div class="panel-block">
+      <div class="panel-block-title">What we'll do together</div>
+      <ul class="panel-question-list">
+        <li>Listen to your full history without rushing</li>
+        <li>Help you name what might actually be going on</li>
+        <li>Suggest the right tests to get clarity</li>
+        <li>Match you with the right specialist, whether doctor or nutritionist</li>
+      </ul>
+    </div>
+    <div class="panel-resonance">
+      <p class="resonance-text">"I didn't know what was wrong. I just knew something wasn't right. Unlock helped me figure it out."</p>
+      <p class="resonance-sub">No judgment, no assumptions. Just a real conversation.</p>
+      <button class="btn-panel-book" onclick="openModalFromPanel('Not sure, need help understanding symptoms')">Book a free first call</button>
+      <p class="panel-note">No commitment. No forms to fill before talking to someone.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN SITE -->
+<div class="unlock-site">
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">unlock<span>.</span></a>
+    <div class="nav-right">
+      <a href="#" class="nav-book" onclick="openModal(event)">Book now</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#how-it-works" onclick="closeMenu()">How it works</a>
+    <a href="#our-experts" onclick="closeMenu()">Our experts</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#" class="menu-cta" onclick="closeMenu(); openModal(event)">Book consultation</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--pink);"></span>
+        Proactive health for women
+      </div>
+      <h1>Understand your body.<br><em>Before</em> it asks you to.</h1>
+      <p class="hero-sub">From irregular periods and PCOS to fertility and hormonal health, get guidance from doctors and nutritionists who look for root causes, not just prescriptions.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary" onclick="openModal(event)">Book your first consultation</a>
+        <a href="#symptom-picker" class="btn-secondary">Understand my symptoms</a>
+      </div>
+              </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <div class="trust-num">2,400+</div>
+      <div class="trust-label">women supported</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">24 hrs</div>
+      <div class="trust-label">get a call from a doctor</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">94%</div>
+      <div class="trust-label">felt heard from day one</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">3-in-1</div>
+      <div class="trust-label">doctors, nutrition, diagnostics</div>
+    </div>
+  </div>
+
+  <!-- SERVICES / SYMPTOM PICKER -->
+  <section class="section" id="symptom-picker">
+    <div class="section-tag">Start here</div>
+    <div class="section-title">What brings you here?</div>
+    <p class="section-sub">Choose what feels most relevant. We'll guide you through what it means and match you with the right expert.</p>
+
+    <div class="concern-grid">
+      <div class="concern-card" onclick="openPanel('panel-periods')">
+        <div class="concern-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+            <path d="M8 14 Q10 11 12 14 Q14 17 16 14" stroke="#EC4899" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="concern-text">
+          <div class="concern-label">My periods are irregular</div>
+          <div class="concern-hint">Cycles, cramping, spotting</div>
+        </div>
+        <div class="concern-arrow">›</div>
+      </div>
+
+      <div class="concern-card" onclick="openPanel('panel-pcos')">
+        <div class="concern-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <circle cx="12" cy="12" r="7" stroke-dasharray="3 2"/>
+            <circle cx="12" cy="12" r="10" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="concern-text">
+          <div class="concern-label">I have PCOS</div>
+          <div class="concern-hint">Hormones, weight, skin, hair</div>
+        </div>
+        <div class="concern-arrow">›</div>
+      </div>
+
+      <div class="concern-card" onclick="openPanel('panel-fertility')">
+        <div class="concern-icon" style="background:#fce7f3;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 4 6 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4-2.48-8-8-8z"/>
+            <circle cx="12" cy="10" r="2.5" stroke="#A78BFA"/>
+          </svg>
+        </div>
+        <div class="concern-text">
+          <div class="concern-label">I am trying to conceive</div>
+          <div class="concern-hint">Fertility prep, ovulation, planning</div>
+        </div>
+        <div class="concern-arrow">›</div>
+      </div>
+
+      <div class="concern-card" onclick="openPanel('panel-hormones')">
+        <div class="concern-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#EC4899"/>
+          </svg>
+        </div>
+        <div class="concern-text">
+          <div class="concern-label">I want hormone guidance</div>
+          <div class="concern-hint">Fatigue, mood, thyroid, weight</div>
+        </div>
+        <div class="concern-arrow">›</div>
+      </div>
+
+      <div class="concern-card" onclick="openPanel('panel-nutrition')">
+        <div class="concern-icon" style="background:#d1fae5;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a7 7 0 0 1 7 7c0 4-3 7-7 13C9 16 5 13 5 9a7 7 0 0 1 7-7z"/>
+            <path d="M9 9h6M12 6v6" stroke="#34d399"/>
+          </svg>
+        </div>
+        <div class="concern-text">
+          <div class="concern-label">I need nutrition support</div>
+          <div class="concern-hint">Diet, gut health, supplements</div>
+        </div>
+        <div class="concern-arrow">›</div>
+      </div>
+
+      <div class="concern-card" style="border-style:dashed;background:#fdfcff;" onclick="openPanel('panel-unsure')">
+        <div class="concern-icon" style="background:#fce7f3;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <div class="concern-text">
+          <div class="concern-label" style="color:#9CA3AF;font-style:italic;">I don't know what's wrong</div>
+          <div class="concern-hint">Start here, we'll help figure it out</div>
+        </div>
+        <div class="concern-arrow">›</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY UNLOCK -->
+  <section class="section section-alt" id="how-it-works">
+    <div class="section-tag">Why Unlock</div>
+    <div class="section-title">Healthcare that actually opens things up</div>
+    <p class="section-sub">Not another portal that sends you away with a prescription. We stay with you.</p>
+    <div class="why-list">
+      <div class="why-card">
+        <div class="why-icon-wrap wi-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            <path d="M11 8v6M8 11h6" stroke="#EC4899"/>
+          </svg>
+        </div>
+        <div class="why-content">
+          <div class="why-title">Root cause approach</div>
+          <div class="why-desc">We look beyond the symptom checklist. Every plan starts with understanding why, not just what.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon-wrap wi-pink">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#be185d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="why-content">
+          <div class="why-title">Doctors + nutritionists, together</div>
+          <div class="why-desc">Your care team talks to each other. Medical guidance and nutrition built into one plan.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon-wrap wi-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="why-content">
+          <div class="why-title">No judgment. Seriously.</div>
+          <div class="why-desc">Ask what you've been afraid to ask your regular doctor. Our experts are here specifically for this.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon-wrap wi-amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#92400e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" rx="2"/>
+            <path d="M16 8h4l3 3v5h-7V8z"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <div class="why-content">
+          <div class="why-title">Diagnostics and supplements at home</div>
+          <div class="why-desc">Tests done at home. Supplements prescribed on your actual results. Everything ships to you.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey-section" id="services">
+    <div class="section-tag">Your journey</div>
+    <div class="section-title">From first question to feeling better</div>
+    <div class="journey-list">
+      <div class="journey-step">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <div class="step-num">1</div>
+        </div>
+        <div class="step-info">
+          <div class="step-title">Share your symptoms</div>
+          <div class="step-desc">Tell us what's been going on, in your own words. No forms, no rushing.</div>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <div class="step-num">2</div>
+        </div>
+        <div class="step-info">
+          <div class="step-title">Meet your specialist</div>
+          <div class="step-desc">Matched to a doctor or nutritionist, often within 48 hours of booking.</div>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+          <div class="step-num">3</div>
+        </div>
+        <div class="step-info">
+          <div class="step-title">Get your action plan</div>
+          <div class="step-desc">A personalised care plan, not a generic PDF.</div>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+          <div class="step-num">4</div>
+        </div>
+        <div class="step-info">
+          <div class="step-title">Track your progress</div>
+          <div class="step-desc">Follow-ups are built in, not something you have to chase.</div>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/>
+          </svg>
+          <div class="step-num">5</div>
+        </div>
+        <div class="step-info">
+          <div class="step-title">Stay ahead</div>
+          <div class="step-desc">Proactive check-ins so you don't wait for a crisis.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTS -->
+  <section class="section" id="our-experts">
+    <div class="section-tag">Meet the team</div>
+    <div class="section-title">Experts who actually listen</div>
+    <p class="section-sub">Not credential walls. Real people who chose women's health because it matters to them.</p>
+    <div class="experts-scroll">
+      <div class="expert-card">
+        <div class="expert-avatar">
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&h=200&fit=crop&crop=face" alt="Dr. Priya Mehta"/>
+        </div>
+        <div class="expert-info">
+          <div class="expert-name">Dr. Priya Mehta</div>
+          <div class="expert-role">Gynaecologist, Hormonal Health</div>
+          <p class="expert-quote">"I got into hormonal health because women kept being told their symptoms were in their heads. They aren't."</p>
+          <div class="expert-tags">
+            <span class="tag">PCOS</span>
+            <span class="tag">Fertility</span>
+            <span class="tag">Hindi, English</span>
+          </div>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face" alt="Dr. Ananya Bose"/>
+        </div>
+        <div class="expert-info">
+          <div class="expert-name">Dr. Ananya Bose</div>
+          <div class="expert-role">Integrative Nutritionist</div>
+          <p class="expert-quote">"Nutrition for women isn't one-size. Your hormonal phase changes everything, and most advice ignores that."</p>
+          <div class="expert-tags">
+            <span class="tag">Thyroid</span>
+            <span class="tag">Gut health</span>
+            <span class="tag">Bengali, English</span>
+          </div>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">
+          <img src="https://images.unsplash.com/photo-1614859324967-bdf413c35f2c?w=200&h=200&fit=crop&crop=face" alt="Dr. Shreya Nair"/>
+        </div>
+        <div class="expert-info">
+          <div class="expert-name">Dr. Shreya Nair</div>
+          <div class="expert-role">Women's Preventive Health</div>
+          <p class="expert-quote">"Most conditions we treat were preventable. I want to be the doctor you see before the crisis."</p>
+          <div class="expert-tags">
+            <span class="tag">Preventive care</span>
+            <span class="tag">Diagnostics</span>
+            <span class="tag">Malayalam, English</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-alt">
+    <div class="section-tag">Real women</div>
+    <div class="section-title">Heard for the first time</div>
+    <div class="testi-scroll">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"After 3 years of being told my tiredness was stress, Unlock found a thyroid issue in the first consultation. I cried."</p>
+        <div class="testi-author">Riya, 29</div>
+        <div class="testi-detail">Mumbai, PCOS and fatigue</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I finally understood what my cycle was actually telling me. Nobody had ever explained it to me like this before."</p>
+        <div class="testi-author">Tanya, 34</div>
+        <div class="testi-detail">Delhi, Hormonal guidance</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The nutritionist and doctor spoke to each other before my follow-up. That had never happened with any clinic before."</p>
+        <div class="testi-author">Lakshmi, 31</div>
+        <div class="testi-detail">Bengaluru, Fertility support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="section-tag">Got questions?</div>
+    <div class="section-title">Things women usually ask us</div>
+    <p class="section-sub">The questions you'd actually want answered before booking.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Is this just a one-time consultation or ongoing support?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">We're built for ongoing care, not one-and-done appointments. After your first consultation, you get a personalised plan with follow-up sessions included. Your doctor and nutritionist stay aligned throughout.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">I've been told my symptoms are "just stress." Will you actually investigate?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">Yes. This is one of the most common things we hear, and one of the reasons Unlock exists. Our doctors look at hormonal panels, thyroid markers, cycle patterns, and nutritional deficiencies that often get missed in a standard 10-minute consultation.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">I have PCOS. Do you offer more than just weight loss advice?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">Absolutely. PCOS affects insulin, androgens, ovulation, mood, skin, and gut health, and we look at all of it. Our PCOS plans are built around your specific hormonal profile, not a generic protocol.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Can I get lab tests done at home?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">Yes. We partner with certified labs for at-home sample collection. Your doctor reviews the results and adjusts your care plan, no separate app, no chasing reports.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How quickly can I get an appointment?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">Most women are matched with a specialist within 48 hours of booking. We look at both medical and nutritional factors so your care team is ready from the first conversation.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Are your doctors qualified? What should I expect?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">All our doctors are registered practitioners with specialisations in women's health, gynaecology, or integrative medicine. Consultations are 30 to 45 minutes, and you'll leave with a written plan, not just verbal advice.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How is this different from going to a gynaecologist?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">A traditional gynaecologist focuses on clinical care, which is vital. Unlock adds nutritional guidance, at-home diagnostics, follow-up care, and a holistic view of your hormonal health, all in one place.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-tag">Ready?</div>
+    <div class="section-title">Your health. On your terms.</div>
+    <p class="section-sub">Start with one consultation. No commitments, no pressure. Just a real conversation about what's going on with your body.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-white" onclick="openModal(event)">Book your first consultation</a>
+      <a href="#symptom-picker" class="btn-outline-white">Understand my symptoms</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">unlock<span>.</span></a>
+    <p class="footer-tagline">Proactive health for women. Doctors, nutritionists and diagnostics, in one place, built around you.</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#symptom-picker">PCOS care</a></li>
+          <li><a href="#symptom-picker">Hormonal health</a></li>
+          <li><a href="#symptom-picker">Fertility support</a></li>
+          <li><a href="#symptom-picker">Nutrition plans</a></li>
+          <li><a href="#symptom-picker">Diagnostics</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#how-it-works">About us</a></li>
+          <li><a href="#our-experts">Our experts</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul class="footer-links">
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#" onclick="openModal(event)">Contact us</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2025 Unlock Healthcare. All rights reserved.</p>
+      <p>Built for women who don't wait to get sick.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // ---- MENU ----
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ---- CONCERN PANELS ----
+  function openPanel(id) {
+    document.querySelectorAll('.concern-panel').forEach(p => p.classList.remove('open'));
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePanel() {
+    document.querySelectorAll('.concern-panel').forEach(p => p.classList.remove('open'));
+    document.body.style.overflow = '';
+  }
+
+  // ---- MODAL ----
+  function openModal(e) {
+    if (e) e.preventDefault();
+    // reset to form state
+    document.getElementById('modalFormWrap').classList.remove('hidden');
+    document.getElementById('modalSuccess').classList.remove('show');
+    document.getElementById('bookingModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openModalFromPanel(concern) {
+    closePanel();
+    document.getElementById('modalFormWrap').classList.remove('hidden');
+    document.getElementById('modalSuccess').classList.remove('show');
+    document.getElementById('bookingModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const sel = document.getElementById('m-concern');
+    if (sel) sel.value = concern;
+  }
+
+  function closeModal() {
+    document.getElementById('bookingModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ---- FORM SUBMIT + LOCAL STORAGE DATA CAPTURE ----
+  function submitForm() {
+    const name = document.getElementById('m-name').value.trim();
+    const phone = document.getElementById('m-phone').value.trim();
+    const concern = document.getElementById('m-concern').value;
+
+    if (!name || !phone) {
+      document.getElementById('m-name').style.borderColor = !name ? '#EC4899' : '';
+      document.getElementById('m-phone').style.borderColor = !phone ? '#EC4899' : '';
+      return;
+    }
+
+    // Save lead to localStorage
+    const lead = {
+      id: Date.now(),
+      name,
+      phone,
+      concern: concern || 'Not specified',
+      timestamp: new Date().toISOString(),
+      source: 'mobile'
+    };
+
+    try {
+      const existing = JSON.parse(localStorage.getItem('unlock_leads') || '[]');
+      existing.push(lead);
+      localStorage.setItem('unlock_leads', JSON.stringify(existing));
+    } catch(e) {}
+
+    // Also POST to Formspree (replace YOUR_FORM_ID with your actual Formspree form ID)
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, phone, concern, source: 'unlock-mobile', timestamp: lead.timestamp })
+    }).catch(() => {}); // silent fail if offline, data still saved locally
+
+    // Show success
+    document.getElementById('modalFormWrap').classList.add('hidden');
+    document.getElementById('modalSuccess').classList.add('show');
+
+    setTimeout(closeModal, 3000);
+  }
+
+  // ---- FAQ ----
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Close panel on back button (Android)
+  window.addEventListener('popstate', function() {
+    closePanel();
+    closeMenu();
+  });
+</script>
+</body>
+</html>
