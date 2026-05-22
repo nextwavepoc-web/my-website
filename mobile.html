@@ -1854,29 +1854,13 @@
       return;
     }
 
-    // Save lead to localStorage
-    const lead = {
-      id: Date.now(),
-      name,
-      phone,
-      concern: concern || 'Not specified',
-      timestamp: new Date().toISOString(),
-      source: 'mobile'
-    };
-
-    try {
-      const existing = JSON.parse(localStorage.getItem('unlock_leads') || '[]');
-      existing.push(lead);
-      localStorage.setItem('unlock_leads', JSON.stringify(existing));
-    } catch(e) {}
-
-    // Also POST to Formspree (replace YOUR_FORM_ID with your actual Formspree form ID)
-    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  fetch('https://script.google.com/macros/s/AKfycbyW2UeW0C_TYxWsiq0XV1MMxwS5hFn5tGbYAeo1r75ny4iBjYp3exljv9TTBXMdaEvoiA/exec', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, phone, concern, source: 'unlock-mobile', timestamp: lead.timestamp })
-    }).catch(() => {}); // silent fail if offline, data still saved locally
-
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ name, phone, concern: concern || 'Not specified', source: 'unlock-mobile' })
+    }).catch(() => {});
+    
     // Show success
     document.getElementById('modalFormWrap').classList.add('hidden');
     document.getElementById('modalSuccess').classList.add('show');
