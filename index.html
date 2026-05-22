@@ -3,24 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
+  <title>The Unlock</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
 </head>
 
 <body>
 
+<iframe id="siteFrame"></iframe>
+
 <script>
-  window.onload = function () {
 
-    const isMobile =
-      /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  const isMobile =
+    /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
-    if (isMobile) {
-      window.location.replace("mobile.html");
-    } else {
-      window.location.replace("desktop.html");
-    }
+  const frame = document.getElementById("siteFrame");
 
-  };
+  if (isMobile) {
+    frame.src = "mobile.html";
+  } else {
+    frame.src = "desktop.html";
+  }
+
 </script>
 
 </body>
